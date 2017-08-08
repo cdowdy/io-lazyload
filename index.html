@@ -5,10 +5,293 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Lazy Load Images with Intersection Observer</title>
+
+
+    <link rel="stylesheet" href="dist/css/demo.css">
+    <link rel="stylesheet" href="src/demo/css/prism.css">
+
+
+    <!-- caniuse embed script -->
+    <script src="//cdn.jsdelivr.net/caniuse-embed/1.1.0/caniuse-embed.min.js" defer></script>
+    <!-- demo code highlight -->
+    <script src="src/demo/js/prism.js"></script>
+    <!-- intersection observer polyfill -->
+    <script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
+    <!-- the iolazy load library -->
+    <script src="dist/js/iolazy.min.js" defer></script>
+
 </head>
 <body>
 
+<main class="">
+    <header class="container column">
+        <h1>IOLazy Demo</h1>
+        <p>
+            A small JavaScript image lazy loading library based off of <a href="https://corydowdy.com/blog/lazy-loading-images-with-intersection-observer">Lazy Loading Images with Intersection Observer</a>
+        </p>
+    </header>
+    <section class="container column">
+        <h2>Setup</h2>
+        <ol>
+           <li>
+               Grab the latest release from <a href="https://github.com/cdowdy/io-lazyload/releases/latest">io-lazyload releases</a>
+           </li>
+            <li>
+                Place <code class="language-markup">iolazy.min.js</code> from <em>dist/js</em> as the last script in the head of your document.
+                <ul class="no-bullet">
+                    <li>
+                        <pre class="language-markup"><code>&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="x-ua-compatible" content="ie=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+
+    &lt;!-- intersection observer polyfill --&gt;
+    &lt;script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"&gt;&lt;/script&gt;
+   &lt;!-- the iolazy load library --&gt;
+    &lt;script src="dist/js/iolazy.min.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;</code></pre>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Add the class of <code class="language-markup">lazyload</code> to the image(s) you wish to lazyload and modify the src attribute to read <code class="language-markup">data-src</code>
+                <ul class="no-bullet">
+                    <li>
+                        <pre class="language-markup"><code>&lt;img data-src="your/image.jpg" alt="your alt text" class="lazyload" &gt;</code></pre>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                Initialize the script before the closing body tag (or in your own JS file)
+                <ul class="no-bullet">
+                    <li>
+                        <pre class="language-markup"><code>&lt;script&gt;
+document.addEventListener("DOMContentLoaded", function () {
+    new IOlazy();
+});
+&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+                    </li>
+                </ul>
+            </li>
+        </ol>
+    </section>
+<div class="container">
+    <h2>Examples</h2>
+</div>
+    <div class="container demos-photo-grid">
+        <figure class="lightbox-figure">
+
+                <img id="one" sizes="(min-width: 530px) 25vw, 100vw"
+                     data-srcset="img/640-177w.png 177w,
+                     img/640-240w.png 240w,
+                     img/640-321w.png 321w,
+                     img/thumb/640-th.png 367w"
+
+                     data-src="img/thumb/640-th.png"
+                     alt="orange rectangle with the number 640 in the center"
+                     class="lazyload"
+                     width="100%" >
+        </figure>
+
+        <figure class="lightbox-figure">
+
+                <img id="two" sizes="25vw" data-src="img/thumb/lena-th.jpg"
+                     alt="lena reference image"
+                     class="lazyload"
+                     width="100%" >
+        </figure>
+
+        <figure class="lightbox-figure">
+
+                <img id="three" sizes="25vw" data-src="img/thumb/mp4webm-th.jpg"
+                     alt="webm logo"
+                     class="lazyload"
+                     width="100%" >
+        </figure>
+
+        <figure class="lightbox-figure">
+
+                <img id="four" sizes="25vw"
+                     data-src="img/thumb/pineapples-800-th.jpg"
+                     alt="pinapple in a field"
+                     class="lazyload"
+                     width="100%" >
+        </figure>
+
+        <figure class="lightbox-figure">
+
+                <img id="five" sizes="25vw"
+                     data-src="img/thumb/playground-1-th.jpg"
+                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                     alt="a kids playground"
+                     class="lazyload"
+                     width="100%" >
+        </figure>
+
+        <figure class="lightbox-figure">
+
+                <img id="six" sizes="25vw"
+                     data-src="img/thumb/red_panda_stretching-th.jpg"
+                     src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+                     alt="a red panda being it's natural self which is awesome and is stretching"
+                     class="lazyload"
+                     width="100%"
+                >
+        </figure>
+        <figure class="lightbox-figure">
 
 
+                <!--<img id="seven" sizes="25vw"-->
+                     <!--data-src="img/thumb/dry-tortuga-np-th.jpg"-->
+                     <!--src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"-->
+                     <!--alt="dry tortuga national park"-->
+                     <!--class="lazyload"-->
+                     <!--width="100%" >-->
+            <img id="seven" sizes="(min-width: 530px) 25vw, 100vw"
+                 data-srcset="https://source.unsplash.com/collection/246/175x125 175w,
+                     https://source.unsplash.com/collection/246/240x170 240w,
+                     https://source.unsplash.com/collection/246/321x227 321w"
+
+                 src="https://source.unsplash.com/collection/246/240x170"
+                 alt=""
+                 class="lazyload"
+                 width="100%"
+            >
+        </figure>
+
+        <figure class="lightbox-figure">
+            <img id="eight" sizes="(min-width: 530px) 25vw, 100vw"
+                 data-srcset="https://source.unsplash.com/collection/263320/175x125 175w,
+                     https://source.unsplash.com/collection/263320/240x170 240w,
+                     https://source.unsplash.com/collection/263320/321x227 321w"
+
+                 src="https://source.unsplash.com/collection/263320/240x170"
+                 alt=""
+                 class="lazyload"
+                 width="100%"
+            >
+        </figure>
+    </div>
+
+    <section id="options" class="container column">
+        <h2>Options</h2>
+        <p>
+            There are two (2) options available to pass to IOlazy:
+        </p>
+        <ul>
+            <li>
+                <code class="language-javascript">image</code>
+            </li>
+            <li>
+                <code class="language-javascript">threshold</code>
+            </li>
+        </ul>
+        <p><b>image</b></p>
+        <p>
+            This is the class or image element you wish to lazy load.
+        </p>
+        <pre class="language-markup"><code>&lt;!-- lazy load all images with the class 'lazy' --&gt;
+&lt;script&gt;
+  document.addEventListener("DOMContentLoaded", function () {
+    new IOlazy({
+       image: '.lazy'
+    });
+});
+&lt;/script&gt;
+&lt;!-- lazy load all image elements --&gt;
+&lt;script&gt;
+  document.addEventListener("DOMContentLoaded", function () {
+    new IOlazy({
+       image: 'img'
+    });
+});
+&lt;/script&gt;
+        </code></pre>
+
+        <p><b>Threshold</b></p>
+        <p>
+            How much the image element should be visible before we load the image. Values range from 0 to 1.0. A value of 1 passed in as a threshold means the image is completely visible in the browser viewport. A value of 0.0 means "any non-zero number of pixels". The Library's default is <code class="language-markup">0.05</code>
+        </p>
+        <pre class="language-markup"><code>&lt;script&gt;
+  document.addEventListener("DOMContentLoaded", function () {
+    new IOlazy({
+       threshold: 0.8
+    });
+});
+&lt;/script&gt;</code></pre>
+        <hr>
+        <h3>Responsive Images</h3>
+        <p>
+            To lazyload your responsive images using srcset you'll need to prefix your srcset attribute with <code class="language-markup">data-srcset</code>
+        </p>
+
+        <pre class="language-markup"><code>&lt;img sizes="(min-width: 530px) 25vw, 100vw"
+    data-srcset="your/image-177w.png 177w,
+        your/image-240w.png 240w,
+        your/image-321w.png 321w"
+
+    src="your/low/quality/placeholder.png"
+    alt="Your Alt Text"
+    class="lazyload" &gt;</code></pre>
+
+
+    <p>
+        Your <code class="language-markup">src</code> attribute can be as shown above a low quality placeholder or a 1px transparent gif.
+    </p>
+    <p>
+        If you use a transparent gif or no src attribute you should provide a fallback for browsers that don't use javascript or for instances where the script fails or another script blocks the page.
+    </p>
+    <pre class="language-markup"><code>&lt;style&gt;
+     /** add display none to the images with the lazyload class */
+	.no-js img.lazyload {
+        display: none;
+    }
+&lt;/style&gt;
+
+&lt;noscript&gt;
+	&lt;img src="your/image.png" /&gt;
+&lt;/noscript&gt;
+
+&lt;img sizes="(min-width: 530px) 25vw, 100vw"
+    data-srcset="your/image-177w.png 177w,
+        your/image-240w.png 240w,
+        your/image-321w.png 321w"
+
+    src="your/low/quality/placeholder.png"
+    alt="Your Alt Text"
+    class="lazyload" &gt;</code></pre>
+        <hr>
+        <h2>Browser Support</h2>
+        <p>
+            Intersection Observer is supported in these browsers without a polyfill
+        </p>
+        <p class="ciu_embed" data-feature="intersectionobserver" data-periods="future_1,current,past_1,past_2">
+              <a href="http://caniuse.com/#feat=intersectionobserver">Can I Use intersectionobserver?</a> Data on support for the intersectionobserver feature across the major browsers from caniuse.com.
+        </p>
+
+        <p><b>PolyFill</b></p>
+        <p>
+            This demo uses <a href="https://polyfill.io/v2/docs/">PolyFill.io</a> to supply the polyfill. It's also noted above in the setup portion. 
+        </p>
+        <p>
+            If you don't want to use another third party there is a polyfill provided by the Web Incubator Community Group @ <a href="https://github.com/WICG/IntersectionObserver/tree/gh-pages/polyfill">IntersectionObserver Polyfill</a>
+        </p>
+        <p>
+            The polyfill supports all Firefox, Chrome, Edge, Safari 6+, Internet Explorer 7+. <a href="https://github.com/WICG/IntersectionObserver/tree/gh-pages/polyfill#browser-support">Intersection Observer Polyfill Browser Support</a>
+        </p>
+        <h3>Source</h3>
+        <ul>
+            <li>
+                <a href="https://github.com/cdowdy/io-lazyload">IOLazy Source</a>
+            </li>
+        </ul>
+    </section>
+</main>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    new IOlazy();
+});
+</script>
 </body>
 </html>
