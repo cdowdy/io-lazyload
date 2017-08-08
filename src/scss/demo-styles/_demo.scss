@@ -1,0 +1,61 @@
+/** main page container **/
+.container {
+  display: flex;
+  max-width: 90%;
+  padding-top: 5em;
+  margin: auto;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.demos-photo-grid {
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+
+
+.demos-split {
+  display: flex;
+  max-width: 100%;
+  flex-wrap: wrap;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+
+  @media screen and (min-width: 800px) {
+    max-width: 90%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+}
+
+.demos-split--item {
+  flex: 1;
+  max-width: 100%
+}
+
+/** The figure element wrapping our images and anchor tags for our lightbox **/
+//.lightbox-figure {
+//  display: flex;
+//  align-content: center;
+//  justify-content: center;
+//  @media screen and (min-width: 530px) {
+//      width: 20%;
+//  }
+//}
+
+.lightbox-figure {
+  @media screen and (min-width: 530px) {
+    flex: 0 0 25%;
+  }
+}
+
+
+/** The actual image that is show on load ( the thumbnail ) */
+.dialog-lightbox-image {
+  object-fit: contain;
+  max-height: 260px;
+}
