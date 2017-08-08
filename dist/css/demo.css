@@ -1,0 +1,76 @@
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: #4a4a4a; }
+
+main {
+  margin-bottom: 3vh; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: .5rem; }
+
+hr {
+  border: none;
+  border-top: solid 1px #ddd;
+  margin: 2rem 0; }
+
+.usage-container {
+  display: flex;
+  width: 90%;
+  margin: auto;
+  flex-direction: column; }
+
+.no-bullet {
+  list-style: none; }
+
+/** main page container **/
+.container {
+  display: flex;
+  max-width: 90%;
+  padding-top: 5em;
+  margin: auto; }
+
+.column {
+  flex-direction: column; }
+
+.demos-photo-grid {
+  flex-flow: row wrap;
+  justify-content: space-around; }
+
+.demos-split {
+  display: flex;
+  max-width: 100%;
+  flex-wrap: wrap;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem; }
+  @media screen and (min-width: 800px) {
+    .demos-split {
+      max-width: 90%;
+      padding-left: 0;
+      padding-right: 0; } }
+
+.demos-split--item {
+  flex: 1;
+  max-width: 100%; }
+
+/** The figure element wrapping our images and anchor tags for our lightbox **/
+@media screen and (min-width: 530px) {
+  .lightbox-figure {
+    flex: 0 0 25%; } }
+
+/** The actual image that is show on load ( the thumbnail ) */
+.dialog-lightbox-image {
+  object-fit: contain;
+  max-height: 260px; }
