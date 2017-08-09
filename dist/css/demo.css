@@ -32,9 +32,6 @@ hr {
   margin: auto;
   flex-direction: column; }
 
-.no-bullet {
-  list-style: none; }
-
 /** main page container **/
 .container {
   display: flex;
@@ -71,6 +68,16 @@ hr {
     flex: 0 0 25%; } }
 
 /** The actual image that is show on load ( the thumbnail ) */
-.dialog-lightbox-image {
+img {
   object-fit: contain;
   max-height: 260px; }
+
+.no-bullet {
+  list-style: none; }
+
+.numbered {
+  counter-reset: list-code-example; }
+
+.list-code-example:before {
+  counter-increment: list-code-example;
+  content: counter(list-code-example) ". "; }

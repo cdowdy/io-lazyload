@@ -9,6 +9,7 @@ html {
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   color: #4a4a4a;
+
 }
 
 main {
@@ -39,6 +40,5 @@ hr {
   flex-direction: column;
 }
 
-.no-bullet { list-style: none; }
 
 @import "demo-styles/demo";
