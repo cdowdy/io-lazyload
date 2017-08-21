@@ -12,7 +12,7 @@
 
 
     <!-- caniuse embed script -->
-    <script src="//cdn.jsdelivr.net/caniuse-embed/1.1.0/caniuse-embed.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/caniuse-embed/1.1.0/caniuse-embed.min.js" defer></script>
     <!-- demo code highlight -->
     <script src="src/demo/js/prism.js"></script>
     <!-- intersection observer polyfill -->
@@ -291,6 +291,16 @@ document.addEventListener("DOMContentLoaded", function () {
     class="lazyload" &gt;</code></pre>
         <hr>
         <h2>Browser Support</h2>
+        <p>
+            The lazyload script itself uses <code class="language-javascript">classList</code> which is Internet Explorer 10+. If you have to support lower than that you'll need to use a polyfill (<a
+                href="http://caniuse.com/#feat=classlist">found under 'resources' here</a>) or use the Polyfill service mentioned below under "polyfill".
+        </p>
+        <ul>
+            <li>Internet Explorer 10+</li>
+            <li>Internet Explorer Mobile 10+</li>
+            <li>Safari and iOS Safari (chrome included) 6.1+</li>
+            <li>Chrome, FireFox, Edge, Opera and all other "modern" browsers</li>
+        </ul>
         <p>
             Intersection Observer is supported in these browsers without a polyfill
         </p>

@@ -45,12 +45,12 @@ class IOlazy {
 
                 change.target.classList.add('visible');
 
-                if ( change.target.dataset.srcset ) {
-                    change.target.srcset = change.target.dataset.srcset;
+                if ( change.target.getAttribute('data-srcset') ) {
+                    change.target.srcset = change.target.getAttribute('data-srcset');
                 }
 
-                if (change.target.dataset.src) {
-                    change.target.src = change.target.dataset.src;
+                if ( change.target.getAttribute('data-src') ) {
+                    change.target.src = change.target.getAttribute('data-src');
                 }
 
                 this.observer.unobserve(change.target);
