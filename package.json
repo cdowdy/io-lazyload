@@ -2,7 +2,7 @@
   "name": "iolazyload",
   "version": "1.0.0",
   "description": "Lazy Load images with intersection observer",
-  "main": "/dist/js/iolazy.min.js",
+  "main": "dist/js/iolazy.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
