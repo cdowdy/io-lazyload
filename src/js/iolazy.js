@@ -25,13 +25,15 @@ if (window.NodeList && !NodeList.prototype.forEach) {
 
 class IOlazy {
 
-    constructor( { image = '.lazyload', threshold = .006 } = {} ) {
+    constructor( { image = '.lazyload', threshold = .006, rootMargin = '0px' } = {} ) {
 
         this.threshold = threshold;
+        this.rootMargin = rootMargin;
         this.image = document.querySelectorAll(image);
         // the intersection observer
         this.observer = new IntersectionObserver( ::this.handleChange, {
-            threshold: [ this.threshold ]
+            threshold: [ this.threshold ],
+            rootMargin: [ this.rootMargin ]
         });
 
         this.lazyLoad();

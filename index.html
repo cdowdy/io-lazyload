@@ -248,6 +248,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 &lt;/script&gt;</code></pre>
+
+        <p><b>Root Margin</b></p>
+        <p>Margin added around the root. Can have values similar to the CSS margin property, e.g. "10px 20px 30px 40px" (top, right, bottom, left). This set of values serves to grow or shrink each side of the root element's bounding box before computing intersections. Defaults to all zeros.</p>
+        <pre class="language-markup"><code>&lt;script&gt;
+  document.addEventListener("DOMContentLoaded", function () {
+    new IOlazy({
+       rootMargin: "50px 20px"
+    });
+});
+&lt;/script&gt;</code></pre>
+
         <hr>
         <h3>Responsive Images</h3>
         <p>
