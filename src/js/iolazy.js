@@ -33,7 +33,7 @@ class IOlazy {
         // the intersection observer
         this.observer = new IntersectionObserver( ::this.handleChange, {
             threshold: [ this.threshold ],
-            rootMargin: [ this.rootMargin ]
+            rootMargin:  this.rootMargin
         });
 
         this.lazyLoad();

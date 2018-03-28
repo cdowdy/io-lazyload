@@ -160,14 +160,6 @@ document.addEventListener("DOMContentLoaded", function () {
             </figcaption>
         </figure>
         <figure class="lightbox-figure">
-
-
-            <!--<img id="seven" sizes="25vw"-->
-            <!--data-src="img/thumb/dry-tortuga-np-th.jpg"-->
-            <!--src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"-->
-            <!--alt="dry tortuga national park"-->
-            <!--class="lazyload"-->
-            <!--width="100%" >-->
             <img id="seven" sizes="(min-width: 530px) 25vw, 100vw"
                  data-srcset="https://source.unsplash.com/collection/246/175x125 175w,
                      https://source.unsplash.com/collection/246/240x170 240w,
@@ -195,6 +187,25 @@ document.addEventListener("DOMContentLoaded", function () {
             <figcaption>
                 <p>
                     Images from: <a href="https://unsplash.com/collections/263320">Unsplash.com Collection Fear</a>
+                </p>
+            </figcaption>
+        </figure>
+
+        <figure class="lightbox-figure">
+
+            <img id="nine" sizes="(min-width: 530px) 25vw, 100vw"
+                 data-srcset="https://source.unsplash.com/collection/1525582/175x125 175w,
+                     https://source.unsplash.com/collection/1525582/240x170 240w,
+                     https://source.unsplash.com/collection/1525582/321x227 321w"
+
+                 src="https://source.unsplash.com/collection/1525582/240x170"
+                 alt=""
+                 class="lazyload"
+                 width="100%" >
+            <figcaption>
+                <p>
+                    Uses <code class="language-javascript">rootMargin</code>
+                    Images from: <a href="https://unsplash.com/collections/1525582/above-the-trees-%F0%9F%8C%B2">Unsplash.com Collection Above The Trees</a>
                 </p>
             </figcaption>
         </figure>
@@ -352,6 +363,13 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         new IOlazy();
+
+        new IOlazy({
+            image: '#nine',
+
+            rootMargin: "50px 20px"
+        });
+
     });
 </script>
 </body>
