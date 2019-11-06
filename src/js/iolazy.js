@@ -45,7 +45,9 @@ class IOlazy {
 
             if (change.isIntersecting) {
 
-                change.target.classList.add('visible');
+                change.target.addEventListener('load', () => {
+                    change.target.classList.add('visible');    
+                });
 
                 if ( change.target.getAttribute('data-srcset') ) {
                     change.target.srcset = change.target.getAttribute('data-srcset');
