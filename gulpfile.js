@@ -14,7 +14,7 @@ var rename = require("gulp-rename");
 gulp.task( 'prodJS', function () {
     return gulp.src('src/dev/js/*.js')
 
-        .pipe(uglify())
+        .pipe(uglify().on('error', console.error))
         .pipe(rename(function (path) {
             path.basename += '.min';
             return path;
