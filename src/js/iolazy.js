@@ -31,6 +31,8 @@ class IOlazy {
         this.rootMargin = rootMargin;
         this.image = document.querySelectorAll(image);
         // the intersection observer
+        // the '::' is 'transform function bind' https://babeljs.io/docs/plugins/transform-function-bind
+        // you could also use 'this.handleChange.bind(this)' since that's what babel compiles it to anyways
         this.observer = new IntersectionObserver( ::this.handleChange, {
             threshold: [ this.threshold ],
             rootMargin:  this.rootMargin
