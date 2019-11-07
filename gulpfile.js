@@ -44,12 +44,12 @@ gulp.task('watch', function() {
     gulp.watch('src/scss/**/**/*.scss', ['sass']);
 });
 
-gulp.task('js-watch', ['dev'], function (done) {
+gulp.task('js-watch', gulp.series('dev', function (done) {
     browserSync.reload();
     done();
-});
+}));
 
-gulp.task('serve', ['dev'], function() {
+gulp.task('serve', gulp.series('dev', function() {
 
     browserSync.init({
         server:  {
@@ -57,11 +57,11 @@ gulp.task('serve', ['dev'], function() {
         }
     });
 
-    gulp.watch('src/scss/**/**/*.scss', ['sass']);
-    gulp.watch('src/js/**/**/*.js', ['dev']);
+    gulp.watch('src/scss/**/**/*.scss', gulp.series('sass'));
+    gulp.watch('src/js/**/**/*.js', gulp.series('dev'));
     gulp.watch("*.html").on('change', browserSync.reload);
-});
+}));
 
 
-gulp.task('default', ['serve']);
+gulp.task('default', gulp.series('serve'));
 
