@@ -1,11 +1,8 @@
 var gulp = require("gulp");
 var babel = require("gulp-babel");
-var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
 var sass = require('gulp-sass');
 var browserSync = require('browser-sync').create();
-var pump = require('pump');
 var rename = require("gulp-rename");
 
 

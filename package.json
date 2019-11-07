@@ -26,14 +26,10 @@
     "bulma": "^0.5.1",
     "gulp": "^4.0.2",
     "gulp-babel": "^6.1.2",
-    "gulp-concat": "^2.6.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^4.0.2",
-    "gulp-sourcemaps": "^2.6.0",
     "gulp-uglify": "^3.0.0",
-    "node-sass": "^4.13.0",
-    "pump": "^1.0.2",
-    "webpack": "^3.3.0"
+    "node-sass": "^4.13.0"
   },
   "browserslist ": [
     "ie 11",
