@@ -23,13 +23,12 @@
     "babel-plugin-transform-function-bind": "^6.22.0",
     "babel-preset-env": "^1.6.0",
     "browser-sync": "^2.18.13",
-    "bulma": "^0.5.1",
     "gulp": "^4.0.2",
     "gulp-babel": "^6.1.2",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "^4.0.2",
+    "gulp-sass": "^4.1.0",
     "gulp-uglify": "^3.0.0",
-    "node-sass": "^4.13.0"
+    "node-sass": "^4.14.1"
   },
   "browserslist ": [
     "ie 11",
