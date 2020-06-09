@@ -12,7 +12,8 @@
 
 
     <!-- caniuse embed script -->
-    <script src="https://cdn.jsdelivr.net/caniuse-embed/1.1.0/caniuse-embed.min.js" defer></script>
+    <!-- found here https://caniuse.bitsofco.de/ -->
+    <script src="https://cdn.jsdelivr.net/gh/ireade/caniuse-embed/public/caniuse-embed.min.js" async></script>
     <!-- demo code highlight -->
     <script src="src/demo/js/prism.js"></script>
     <!-- intersection observer polyfill -->
@@ -339,9 +340,13 @@ document.addEventListener("DOMContentLoaded", function () {
         <p>
             Intersection Observer is supported in these browsers without a polyfill
         </p>
-        <p class="ciu_embed" data-feature="intersectionobserver" data-periods="future_1,current,past_1,past_2">
-              <a href="http://caniuse.com/#feat=intersectionobserver">Can I Use intersectionobserver?</a> Data on
-            support for the intersectionobserver feature across the major browsers from caniuse.com.
+        <!-- updated caniuse embed -->
+        <p class="ciu_embed" data-feature="intersectionobserver" data-periods="future_1,current,past_1,past_2" data-accessible-colours="true">
+            <picture>
+                <source type="image/webp" srcset="https://caniuse.bitsofco.de/image/intersectionobserver.webp">
+                <source type="image/png" srcset="https://caniuse.bitsofco.de/image/intersectionobserver.png">
+                <img src="https://caniuse.bitsofco.de/image/intersectionobserver.jpg" alt="Data on support for the intersectionobserver feature across the major browsers from caniuse.com">
+            </picture>
         </p>
 
         <p><b>PolyFill</b></p>
