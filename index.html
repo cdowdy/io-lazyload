@@ -209,6 +209,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 </p>
             </figcaption>
         </figure>
+
+        <!-- a css background image -->
+        <div class="lightbox-figure lazyload-bg" >
+            <p>
+                This Is a background image in CSS
+            </p>
+        </div>
     </div>
 
     <section id="options" class="container column">
@@ -368,6 +375,12 @@ document.addEventListener("DOMContentLoaded", function () {
             image: '#nine',
 
             rootMargin: "50px 20px"
+        });
+
+        // for the css background image
+
+        new IOlazy({
+            image: '.lazyload-bg'
         });
 
     });
