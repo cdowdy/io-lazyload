@@ -37,8 +37,8 @@ gulp.task('dev', function () {
 
 
 gulp.task('watch', function() {
-    gulp.watch('src/js/**/**/*.js', ['dev',]);
-    gulp.watch('src/scss/**/**/*.scss', ['sass']);
+    gulp.watch('src/js/**/**/*.js', gulp.series('dev'));
+    gulp.watch('src/scss/**/**/*.scss', gulp.series('sass'));
 });
 
 gulp.task('js-watch', gulp.series('dev', function (done) {

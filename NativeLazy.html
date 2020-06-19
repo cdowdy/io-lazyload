@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Native Lazy Loading With IOlazy</title>
+
+
+    <link rel="stylesheet" href="dist/css/demo.css">
+    <link rel="stylesheet" href="src/demo/css/prism.css">
+
+
+</head>
+<body>
+<main>
+    <header class="container column">
+        <h1>Using Native Lazy loading with IOLazy</h1>
+    </header>
+    <section class="container column">
+        <h2>setup</h2>
+        <div class="numbered">
+            <p class="list-code-example">
+                Grab the latest release from <a href="https://github.com/cdowdy/io-lazyload/releases/latest">io-lazyload
+                releases</a>
+            </p>
+            <p class="list-code-example">
+                Or install it through NPM with <code class="language-bash">npm install iolazyload</code>
+            </p>
+            <p class="list-code-example">
+                add some inline javascript (or in your bundle however you choose) to check for the loading attribute, then apply our scripts.
+            </p>
+            <p class="list-code-example">
+                for every image you wish to lazyload add a <code class="language-markup">data-src</code> attribute, a <code class="language-markup">data-srcset</code> for your responsive images and the <code class="language-markup">loading='lazy'</code> attribute.
+            </p>
+        </div>
+    </section>
+    <section class="container column">
+        <p><b>Javascript Needed:</b></p>
+        <pre class="language-markup"><code>&lt;script&gt;
+  if ('loading' in HTMLImageElement.prototype) {
+      // you could also use the class/id you use for the IOLazy library here for the images variable.
+      const images = document.querySelectorAll("img");
+      images.forEach( img => {
+          img.src = img.dataset.src;
+          //  this if clause is only needed if you have __ANY__ images with a srcset attribute.
+          if (img.dataset.srcset) {
+            img.srcset = img.dataset.srcset;
+        }
+      });
+  } else {
+      let scriptEl = document.createElement('script');
+      // set the scripts attribute to 'async'
+      scriptEl.async = true;
+      // set the src of the script element to the IOlazy javascript file.
+      script.src = './path/to/iolazy.min.js';
+
+     // append this newly created script element to the end of the body of our page.
+     document.appendChild(scriptEl);
+ }
+&lt;/script&gt;</code></pre>
+        <p><b>Markup needed for your images</b></p>
+        <p>
+            Add the <code class="language-markup"> data-src</code>, <code class="language-markup">data-srcset</code> and
+            <code class="language-markup">loading</code> attributes
+        </p>
+        <pre class="language-markup"><code>&lt;img sizes="(min-width: 530px) 25vw, 100vw"
+    data-srcset="your/image-177w.png 177w,
+        your/image-240w.png 240w,
+        your/image-321w.png 321w"
+    src="your/low/quality/placeholder.png"
+    alt="Your Alt Text"
+    class="lazyload"
+
+    loading="lazy"
+    &gt;</code></pre>
+    </section>
+    <div class="container">
+        <h2>example</h2>
+    </div>
+    <div class="container demos-photo-grid">
+        <figure class="lightbox-figure ">
+
+            <img id="six" sizes="25vw"
+                 data-src="img/thumb/red_panda_stretching-th.jpg"
+                 alt="a red panda being it's natural self which is awesome and is stretching"
+                 src="img/thumb/red_panda_stretching-th.jpg"
+                 class="lazyload"
+                 loading="lazy"
+                 width="100%" >
+            <figcaption>
+                <p class="center-text">
+                    Red Panda Stretching By <a class="external-link" href="https://www.flickr.com/photos/ekilby/11061337434">Eric Kilby</a>
+                </p>
+            </figcaption>
+        </figure>
+    </div>
+    <section class="container column">
+        <h2>Troubleshooting</h2>
+        <p><b>Internet Explorer</b></p>
+        <p>
+            In order for the above check for loading in your page there is an arrow function used. Specifically:
+        </p>
+        <pre class="language-javascript"><code>images.forEach( img => { // this arrow function here
+  img.src = img.dataset.src;
+  //  this if clause is only needed if you have __ANY__ images with a srcset attribute.
+    if (img.dataset.srcset) {
+        img.srcset = img.dataset.srcset;
+    }
+});</code></pre>
+        <p>
+            You'll need to swap the arrow function out if you wish to support browsers that don't understand arrow functions. This can either be done inline or through your build step.
+        </p>
+        <pre class="language-javascript"><code>images.forEach( function (img) {
+  img.src = img.dataset.src;
+    if (img.dataset.srcset) {
+        img.srcset = img.dataset.srcset;
+    }
+});</code></pre>
+        <p><b>Images wont show up and I've got all the right code</b></p>
+        <p>
+            You should double check to make sure you have a <code class="language-markup">src</code> attribute on your image tage. Some browsers wont swap out the newly swapped in image without an image or placeholder.
+        </p>
+    </section>
+    <div class="container">
+        <a href="index.html">back to IOLazy homepage</a>
+    </div>
+</main>
+<!-- demo code highlight -->
+<script src="src/demo/js/prism.js" async></script>
+<!-- intersection observer polyfill -->
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=IntersectionObserver" async></script>
+<script>
+    if ('loading' in HTMLImageElement.prototype) {
+        console.log('loading available')
+        // you could also use the class/id you use for the IOLazy library here for the images variable.
+        const images = document.querySelectorAll('img');
+        console.log('loading')
+        images.forEach(function (img) {
+            img.src = img.dataset.src;
+            //  this if clause is only needed if you have __ANY__ images with a srcset attribute.
+            if (img.dataset.srcset) {
+                img.srcset = img.dataset.srcset;
+            }
+        });
+    } else {
+        let scriptEl = document.createElement('script');
+        // set the scripts attribute to 'async'
+        scriptEl.async = true;
+        // set the src of the script element to the IOlazy javascript file.
+        scriptEl.src = './dist/js/iolazy.min.js';
+
+        // append this newly created script element to the end of the body of our page.
+        document.body.appendChild(scriptEl);
+    }
+</script>
+</body>
+</html>
