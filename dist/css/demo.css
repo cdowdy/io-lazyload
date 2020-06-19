@@ -72,6 +72,16 @@ img {
   object-fit: contain;
   max-height: 260px; }
 
+.quick-nav li {
+  margin-bottom: 1.25em; }
+
+.page-nav {
+  color: #4a4a4a;
+  text-decoration: none; }
+  .page-nav:hover, .page-nav:focus {
+    color: #05182a;
+    text-decoration: underline; }
+
 .no-bullet {
   list-style: none; }
 
@@ -81,3 +91,9 @@ img {
 .list-code-example:before {
   counter-increment: list-code-example;
   content: counter(list-code-example) ". "; }
+
+.lazyload-bg > p {
+  padding-top: 70%; }
+
+.lazyload-bg.visible {
+  background-image: url("../../img/dry-tortuga-np-340w.jpg"); }
