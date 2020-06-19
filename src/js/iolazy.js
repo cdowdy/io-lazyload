@@ -47,9 +47,14 @@ class IOlazy {
 
             if (change.isIntersecting) {
 
-                change.target.addEventListener('load', () => {
-                    change.target.classList.add('visible');    
-                });
+                if ( change.target.tagName === 'IMG' ) {
+                    change.target.addEventListener('load', () => {
+                        change.target.classList.add('visible');
+                    })
+                } else {
+                    change.target.classList.add('visible');
+                }
+
 
                 if ( change.target.getAttribute('data-srcset') ) {
                     change.target.srcset = change.target.getAttribute('data-srcset');
