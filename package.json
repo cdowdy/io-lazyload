@@ -1,6 +1,6 @@
 {
   "name": "iolazyload",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Lazy Load images with intersection observer",
   "main": "dist/js/iolazy.min.js",
   "scripts": {
@@ -20,7 +20,6 @@
     "@babel/cli": "^7.10.1",
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
-
     "babel-plugin-transform-function-bind": "^6.22.0",
     "browser-sync": "^2.18.13",
     "gulp": "^4.0.2",
