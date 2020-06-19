@@ -45,9 +45,27 @@
                 href="https://corydowdy.com/blog/lazy-loading-images-with-intersection-observer">Lazy Loading Images
             with Intersection Observer</a>
         </p>
+        <nav>
+            <ul class="no-bullet quick-nav">
+                <li>
+                    <a class="page-nav" href="#setup">Setup</a>
+                </li>
+                <li>
+                    <a class="page-nav" href="#options">Options</a>
+                </li>
+                <li>
+                    <a class="page-nav" href="#browser_support">Browser Support</a>
+                </li>
+                <li>
+                    <a class="page-nav" href="#native">Using Native Lazy Load</a>
+                </li>
+            </ul>
+        </nav>
     </header>
     <section class="container column">
-        <h2>Setup</h2>
+        <h2 id="setup">
+            <a href="#setup" class="page-nav">Setup</a>
+        </h2>
 
         <div class="numbered">
             <p class="list-code-example">
@@ -232,8 +250,10 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
     </div>
 
-    <section id="options" class="container column">
-        <h2>Options</h2>
+    <section  class="container column">
+        <h2 id="options">
+            <a href="#options" class="page-nav">Options</a>
+        </h2>
         <p>
             There are three (3) options available to pass to IOlazy:
         </p>
@@ -339,7 +359,11 @@ document.addEventListener("DOMContentLoaded", function () {
     alt="Your Alt Text"
     class="lazyload" &gt;</code></pre>
         <hr>
-        <h2>Browser Support</h2>
+        <h2 id="browser_support">
+            <a href="#browser_support" class="page-nav">
+            Browser Support
+            </a>
+        </h2>
         <p>
             The lazyload script itself uses <code class="language-javascript">classList</code> which is Internet Explorer 10+. If you have to support lower than that you'll need to use a polyfill (<a
                 href="http://caniuse.com/#feat=classlist">found under 'resources' here</a>) or use the Polyfill service mentioned below under "polyfill".
@@ -383,6 +407,83 @@ document.addEventListener("DOMContentLoaded", function () {
                 <a href="https://github.com/cdowdy/io-lazyload">IOLazy Source</a>
             </li>
         </ul>
+    </section>
+    <section id="native" class="container column">
+        <h2>
+            <a href="#native" class="page-nav">Using Native lazy Load</a>
+        </h2>
+        <p>
+            You can forgo using this library to lazy load images in the instance the the browser supports the <a
+                href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-loading"> "loading" attribute</a>.
+        </p>
+        <p>
+            You'll need to add the <code class="language-markup">loading</code> attribute to your each of your image tags in order for this to work properly.
+        </p>
+
+
+        <pre class="language-markup"><code>&lt;img sizes="(min-width: 530px) 25vw, 100vw"
+    data-srcset="your/image-177w.png 177w,
+        your/image-240w.png 240w,
+        your/image-321w.png 321w"
+    src="your/low/quality/placeholder.png"
+    alt="Your Alt Text"
+    class="lazyload"
+
+    loading="lazy"
+    &gt;</code></pre>
+
+        <p>
+            Once your images have the loading attribute we'll need to add a bit of javascript in your page, or your own javascript bundle/file. How you choose to do this is up to you!
+        </p>
+        <p>
+            In this file we will query for all the images on our page, grab the <code class="language-markup">data-src</code> attribute and make that the <code class="language-markup">src</code> of our image tags. If your page contains responsive images with the "srcset" attribute you'll need to also grab those attributes and apply those as well.
+        </p>
+        <p>
+            Example of using the native lazy loading instead of this library.
+        </p>
+        <pre class="language-markup"><code>&lt;script&gt;
+  if ('loading' in HTMLImageElement.prototype) {
+      // you could also use the class/id you use for the IOLazy library here for the images variable.
+      const images = document.querySelectorAll("img");
+      images.forEach(img => {
+          img.src = img.dataset.src;
+          //  this if clause is only needed if you have __ANY__ images with a srcset attribute.
+          if (img.dataset.srcset) {
+            img.srcset = img.dataset.srcset;
+        }
+      });
+  }
+&lt;/script&gt;
+    </code></pre>
+        <p>
+            You'll need to make a decision here as to how you want to load the IOLazy library - in your bundle, a loader etc. Since there are multiple ways for this to happen I'll show you the dynamically imported version.
+        </p>
+
+        <pre class="language-markup"><code>&lt;script&gt;
+  if ('loading' in HTMLImageElement.prototype) {
+      const images = document.querySelectorAll("img");
+      images.forEach(img => {
+          img.src = img.dataset.src;
+          if (img.dataset.srcset) {
+            img.srcset = img.dataset.srcset;
+        }
+      });
+  } else {
+      let scriptEl = document.createElement('script');
+      // set the scripts attribute to 'async'
+      scriptEl.async = true;
+      // set the src of the script element to the IOlazy javascript file.
+      scriptEl.src = './path/to/iolazy.min.js';
+
+     // append this newly created script element to the end of the body of our page.
+     document.body.appendChild(scriptEl);
+ }
+&lt;/script&gt;
+    </code></pre>
+
+        <p>
+            For a full example of using Native Lazyload see this <a href="NativeLazy.html">Using Native Lazyload with IOLazy</a> example page.
+        </p>
     </section>
 </main>
 <script>
