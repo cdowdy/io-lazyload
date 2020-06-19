@@ -60,6 +60,24 @@ img {
   max-height: 260px;
 }
 
+// navigation
+.quick-nav {
+  li {
+    margin-bottom: 1.25em;
+  }
+}
+
+.page-nav {
+  color: #4a4a4a;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    color: #05182a;
+    text-decoration: underline;
+  }
+}
+
 .no-bullet {
 
   list-style: none;
@@ -71,4 +89,24 @@ img {
 .list-code-example:before {
   counter-increment: list-code-example;
   content: counter(list-code-example) ". ";
+}
+
+// For the background image example introduce
+// May 2020
+//.lazyload-bg {
+//  margin: 16px 40px;
+//  height: 260px;
+//  width: 100%;
+//  background-image: url("../../img/dry-tortuga-np-lq-340w.jpg");
+//  background-repeat: no-repeat;
+//  background-size: contain;
+//  /*background-position: center center;*/
+//}
+
+.lazyload-bg > p {
+  padding-top: 70%;
+}
+
+.lazyload-bg.visible {
+  background-image: url("../../img/dry-tortuga-np-340w.jpg");
 }
